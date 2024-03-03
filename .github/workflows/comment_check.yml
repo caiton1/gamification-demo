@@ -3,13 +3,18 @@ name: comment_command
 on:
   issue_comment:
     types: [created, edited, deleted]
+# https://github.com/marketplace/actions/issues-helper#create-comment
+# https://github.com/marketplace/actions/label-actions
+# https://dev.to/github/the-githubtoken-in-github-actions-how-it-works-change-permissions-customizations-3cgp
+
 
 jobs:
   comment:
     # This job only runs for issue comments
     name: comment detection
     runs-on: ubuntu-latest
-    if: contains(github.event.comment.body, '/test')
+    # heck for hello
+    if: contains(github.event.comment.body, '/hello')
     steps:
       - run: |
           echo "/test command issued"

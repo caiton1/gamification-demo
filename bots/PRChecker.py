@@ -14,6 +14,7 @@ def check_pull_requests(repo_owner, repo_name):
             print(f"User has successfully submitted a pull request")
         db = MongoDB()
         user_data = db.download_user_data(repo_owner)
+        # TODO: add points to the system
         user_data['user_data']['xp'] += quests['first_PR']['xp']
         user_data['user_data']['accepted'].remove('first_PR')
         if user_data['user_data'].get('completed') is not None:
