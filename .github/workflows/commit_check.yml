@@ -29,7 +29,7 @@ jobs:
         MONGODB_URI: ${{ secrets.MONGODB_URI}}
 
     - name: Run commit checker
-      if: steps.check_quest.check_accepted == 'success'
+      if: steps.check_accepted.outcome == 'success'
       run: python bots/CommitChecker.py ${{ github.repository_owner }} ${{ github.repository }} ${{ github.ref_name }}
       env:
         MONGODB_URI: ${{ secrets.MONGODB_URI}}

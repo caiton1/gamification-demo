@@ -31,9 +31,7 @@ jobs:
         MONGODB_URI: ${{ secrets.MONGODB_URI}}
 
     - name: Run pull request checker
-      if: steps.check_quest.check_accepted == 'success'
-      run: |
-        echo "running!!!!"
-        python bots/PRChecker.py
+      if: steps.check_accepted.outcome == 'success'
+      run: python bots/PRChecker.py
       env:
         MONGODB_URI: ${{ secrets.MONGODB_URI}}
