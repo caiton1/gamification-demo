@@ -32,6 +32,6 @@ jobs:
 
     - name: Run pull request checker
       if: steps.check_accepted.outcome == 'success'
-      run: python bots/PRChecker.py
+      run: python bots/PRChecker.py ${{ github.repository_owner }} ${{ github.repository }}
       env:
         MONGODB_URI: ${{ secrets.MONGODB_URI}}
